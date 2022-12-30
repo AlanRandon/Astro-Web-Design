@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string
+  children: any
+}
+
+const { title } = Astro.props
+---
+
+<style is:global>
+  @tailwind utilities;
+
+  @layer utilities {
+    .border-layer {
+      background-image: linear-gradient(
+        to right,
+        theme(colors.teal.500) 10%,
+        theme(colors.lime.500) 25% 30%,
+        transparent 50%
+      );
+      background-position: right;
+      background-size: 200%;
+      @apply transition-[background,opacity] duration-1000;
+    }
+
+    .border-layer:hover {
+      background-position: left;
+    }
+
+    :hover > .border-layer:not(:hover) {
+      opacity: 0.7;
+    }
+  }
+</style>
+
+<section class="rounded p-[0.125rem] grid border-layer">
+  <div class="rounded bg-slate-800/90 p-4 grid gap-4 font-sans">
+    <h2 class="text-white text-xl font-bodoni">{title}</h2>
+    <slot />
+  </div>
+</section>

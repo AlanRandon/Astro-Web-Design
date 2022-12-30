@@ -1,0 +1,54 @@
+---
+import Layout from "@layouts/Layout.astro"
+import Card from "@components/Card.astro"
+import Button from "@components/Button.astro"
+---
+
+<style>
+  @tailwind utilities;
+
+  body {
+    @apply bg-slate-800 text-white/70 p-4;
+    background-image: radial-gradient(
+      circle at 0% 0%,
+      theme(colors.slate.800) 10%,
+      theme(colors.slate.900)
+    );
+    background-attachment: fixed;
+  }
+
+  @layer utilities {
+    .grid-blocks {
+      @apply grid justify-items-center gap-4;
+      grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr));
+    }
+  }
+</style>
+
+<Layout title="Web App">
+  <header class="text-white flex flex-row justify-center place-items-center">
+    <img src="waves.svg" class="aspect-square max-w-[40ch]" />
+    <div class="p-4 text-4xl font-bodoni font-bold">Lorem Appsum</div>
+  </header>
+  <main class="grid-blocks card-parent">
+    <Card title="Blazingly Fast"
+      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, officiis
+      recusandae commodi earum explicabo delectus? Corporis eum qui error
+      aliquam. Ex blanditiis consectetur dolores reprehenderit aspernatur
+      voluptas officiis sapiente quas!
+      <Button>See More</Button>
+    </Card>
+    <Card title="It's Just Better"
+      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste animi
+      eius vel aliquam perspiciatis atque cum magnam! Voluptatibus vero
+      architecto magnam vel temporibus iusto aut dolorum impedit ullam
+      voluptatem.<Button>See More</Button>
+    </Card>
+    <Card title="Only £999.99"
+      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste animi
+      eius vel aliquam perspiciatis atque cum magnam! Voluptatibus vero
+      architecto magnam vel temporibus iusto aut dolorum impedit ullam
+      voluptatem.<Button>See More</Button>
+    </Card>
+  </main>
+</Layout>

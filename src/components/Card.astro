@@ -7,7 +7,7 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<style is:global>
+<style>
   @tailwind utilities;
 
   @layer utilities {
@@ -30,12 +30,38 @@ const { title } = Astro.props
     :hover > .border-layer:not(:hover) {
       opacity: 0.7;
     }
+
+    .content-layer {
+      @apply bg-slate-800/90;
+      background-image: radial-gradient(
+        theme(colors.slate.700 / 50%) 0 15%,
+        transparent 15% 100%
+      );
+      background-repeat: repeat;
+      background-size: 1rem 1rem;
+      animation: move-background 3s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .content-layer:hover {
+      animation-play-state: running;
+    }
+
+    @keyframes move-background {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: -2rem -1rem;
+      }
+    }
   }
 </style>
 
 <section class="rounded p-[0.125rem] grid border-layer">
-  <div class="rounded bg-slate-800/90 p-4 grid gap-4 font-sans">
-    <h2 class="text-white text-xl font-bodoni">{title}</h2>
+  <div class="rounded p-4 grid gap-4 font-sans content-layer">
+    <h2 class="text-white text-xl">{title}</h2>
     <slot />
   </div>
 </section>

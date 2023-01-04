@@ -8,46 +8,64 @@ import Button from "@components/Button.astro"
   @tailwind utilities;
 
   body {
-    @apply bg-slate-800 text-white/70 p-4;
     background-image: radial-gradient(
       circle at 0% 0%,
       theme(colors.slate.800) 10%,
       theme(colors.slate.900)
     );
     background-attachment: fixed;
+    @apply bg-slate-800 text-white/70 p-4;
   }
 
   @layer utilities {
     .grid-blocks {
-      @apply grid justify-items-center gap-4;
       grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr));
+      @apply grid justify-items-center gap-4;
+    }
+
+    .header-gradient {
+      background: linear-gradient(
+        to right,
+        theme(colors.teal.500),
+        theme(colors.lime.500)
+      );
+      background-clip: text;
+      color: transparent;
     }
   }
 </style>
 
 <Layout title="Web App">
-  <header class="text-white">
-    <h1 class="p-4 text-4xl font-bold">Lorem Appsum</h1>
+  <header class="text-white grid place-items-center min-h-[100vh] p-4">
+    <div class="flex gap-4 header-gradient">
+      <h1 class="p-4 text-[clamp(2rem,10vw,6rem)] font-bold">
+        Lorem
+        <br />
+        Appsum
+      </h1>
+    </div>
   </header>
   <main class="grid-blocks card-parent">
-    <Card title="Blazingly Fast"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, officiis
-      recusandae commodi earum explicabo delectus? Corporis eum qui error
-      aliquam. Ex blanditiis consectetur dolores reprehenderit aspernatur
-      voluptas officiis sapiente quas!
+    <Card>
+      <span slot="title">Blazingly Fast</span>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, officiis recusandae
+      commodi earum explicabo delectus? Corporis eum qui error aliquam. Ex blanditiis
+      consectetur dolores reprehenderit aspernatur voluptas officiis sapiente quas!
       <Button>See More</Button>
     </Card>
-    <Card title="It's Just Better"
-      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste animi
-      eius vel aliquam perspiciatis atque cum magnam! Voluptatibus vero
-      architecto magnam vel temporibus iusto aut dolorum impedit ullam
-      voluptatem.<Button>See More</Button>
+    <Card>
+      <span slot="title">It's Just Better</span>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste animi eius
+      vel aliquam perspiciatis atque cum magnam! Voluptatibus vero architecto magnam
+      vel temporibus iusto aut dolorum impedit ullam voluptatem.
+      <Button>See More</Button>
     </Card>
-    <Card title="Only £999.99"
-      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste animi
-      eius vel aliquam perspiciatis atque cum magnam! Voluptatibus vero
-      architecto magnam vel temporibus iusto aut dolorum impedit ullam
-      voluptatem.<Button>See More</Button>
+    <Card>
+      <span slot="title">Only £999.99</span>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste animi eius
+      vel aliquam perspiciatis atque cum magnam! Voluptatibus vero architecto magnam
+      vel temporibus iusto aut dolorum impedit ullam voluptatem.
+      <Button>See More</Button>
     </Card>
   </main>
 </Layout>
